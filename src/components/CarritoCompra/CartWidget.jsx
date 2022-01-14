@@ -4,7 +4,7 @@ import { BsCart2 } from "react-icons/bs"; //https://react-icons.github.io/react-
 const CartWidget = () => {
     return (
         <div >
-            <BsCart2/>
+            <BsCart2 size={42} title='Ver tu carrito'/>
         </div>
     )
 }
