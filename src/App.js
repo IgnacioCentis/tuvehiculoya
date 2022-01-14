@@ -24,7 +24,7 @@ function App() {
     <Container fluid>
 
       <NavBar />
-      <ItemListContainer />
+      <ItemListContainer mensaje={'CoderHouse'}/>
     </Container>
     
   );
