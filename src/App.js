@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import  Container   from 'react-bootstrap/Container'
 import ItemListContainer from './components/NavBar/ItemListContainer';
+import ComponenteContenedor from './components/ComponenteContenedor';
 
 
 
@@ -25,6 +26,7 @@ function App() {
 
       <NavBar />
       <ItemListContainer mensaje={'CoderHouse'}/>
+      <ComponenteContenedor />
     </Container>
     
   );
