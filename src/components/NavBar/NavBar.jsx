@@ -9,19 +9,20 @@ import   Nav   from 'react-bootstrap/Nav'
 import   Navbar   from 'react-bootstrap/Navbar'
 import CartWidget from '../CarritoCompra/CartWidget'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
     return (
 
         <Navbar bg="secondary"  variant="dark">
             <Container >
-            <Navbar.Brand href="#home">
-                <img     alt=""
+                <Link to ='/'><img     alt=""
                     src="assets/image/brand.png"
                     width="55"
                     height="45"
                     className="d-inline-block align-top ">
-                </img> </Navbar.Brand>
+                </img></Link>
+           
             <Nav className="me-auto">
                 <Nav.Link href="#home">TuVehiculoYa!</Nav.Link>
                 <NavDropdown title="Monopatines" id="basic-nav-monopatines">

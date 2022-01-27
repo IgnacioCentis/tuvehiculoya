@@ -5,9 +5,10 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import  Container   from 'react-bootstrap/Container'
-import ItemListContainer from './components/NavBar/ItemListContainer';
-import ComponenteContenedor from './components/ComponenteContenedor';
-
+ 
+import {BrowserRouter,Routes, Route} from 'react-router-dom';
+import ItemListContainer from './components/Items/ItemListContainer';
+import ItemDetailContainer from './components/Items/ItemDetailContainer';
 
 
 function App() {
@@ -15,20 +16,20 @@ function App() {
   const miEstilo = {backgroundColor: 'blue'}
   return (
     
-  /* <div  className="App"  style={miEstilo}>
-      <img src='assets/image/brand_mini.png' className='w-1'></img>
-     <h3>TuVehiculoYA!</h3> 
-      <NavBar /> 
-    </div>
-      */
-
-    <Container fluid>
-
-      <NavBar />
-      <ItemListContainer mensaje={'CoderHouse'}/>
-      <ComponenteContenedor />
-    </Container>
-    
+    <BrowserRouter>
+      <Container fluid>
+        <NavBar />
+        <Routes> {/*incluyo los componentes que van a tener ruteo
+                exact patch busca la ruta exacta */}
+          {/*<Route exact path='/list' element= {<ItemListContainer mensaje={'CoderHouse'}/>} />*/}
+          <Route exact path='/detail' element= { <ItemListContainer /> } />
+         
+        </Routes>
+      </Container>
+        <ItemListContainer />     
+     {/* <ItemDetailContainer /> */}   
+    </BrowserRouter>
+   
   );
 }
 

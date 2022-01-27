@@ -8,15 +8,12 @@ const ItemCount = ({stock}) => {
     const handlerCountAdd = () => {
         if(count < stock){
             setCount(count +1)
-        }
-       
+        } 
     }
 
     const handlerCountLess = () => {
-        if (count >0){setCount(count -1)}
-        
+        if (count >0){setCount(count -1)}  
     }
-
 
     return (
         <div>
@@ -28,6 +25,7 @@ const ItemCount = ({stock}) => {
                 aria-describedby="basic-addon1"
                 />
                 <Button onClick={handlerCountAdd} variant="outline-secondary" id="button-add">+</Button>
+                <Button variant="outline-primary">Agregar al Carrito</Button> 
             </InputGroup>
             
         </div>
