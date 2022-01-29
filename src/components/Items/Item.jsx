@@ -1,5 +1,5 @@
 import React from "react"
-import {Col, Row, Card, Container, ListGroup, ListGroupItem } from "react-bootstrap"
+import {Col, Row, Card, Container, ListGroup, ListGroupItem, InputGroup, Button } from "react-bootstrap"
 import ItemCount from "./ItemCount"
  
 const Item = ({id, categoria,name,description,price,photo,stock}) =>{
@@ -22,7 +22,7 @@ const Item = ({id, categoria,name,description,price,photo,stock}) =>{
                         <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>
-                            {description}
+                            {description} 
                         </Card.Text>
                         </Card.Body>        
                         <ListGroup className="list-group-flush">
@@ -32,6 +32,11 @@ const Item = ({id, categoria,name,description,price,photo,stock}) =>{
                         </ListGroup>
                         <Card.Body>
                             <ItemCount stock={stock}/>
+                        </Card.Body>
+                        <Card.Body>
+                        <div className="d-grid gap-2">                                   
+                            <Button     variant="primary">Ver el Detalle</Button> 
+                        </div>
                         </Card.Body>
                     </Card>
                 </Col>

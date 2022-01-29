@@ -13,19 +13,20 @@ import { Link } from 'react-router-dom'
 
 const NavBar = () => {
     return (
-
-        <Navbar bg="secondary"  variant="dark">
-            <Container >
-                <Link to ='/'><img     alt=""
+        <Navbar bg="light" expand="lg">
+            <Container>
+                <Navbar.Brand href="#home"><Link to ='/'><img     alt=""
                     src="assets/image/brand.png"
                     width="55"
                     height="45"
                     className="d-inline-block align-top ">
-                </img></Link>
-           
-            <Nav className="me-auto">
-                <Nav.Link href="#home">TuVehiculoYa!</Nav.Link>
-                <NavDropdown title="Monopatines" id="basic-nav-monopatines">
+                </img></Link></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="#home">Home</Nav.Link>
+                    <Nav.Link href="#link">Link</Nav.Link>
+                    <NavDropdown title="Monopatines" id="basic-nav-monopatines">
                     <NavDropdown.Item href="#monopatines/1">Urbano</NavDropdown.Item>
                     <NavDropdown.Item href="#monopatines/2">Infantiles</NavDropdown.Item>
                     <NavDropdown.Divider />
@@ -46,13 +47,16 @@ const NavBar = () => {
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#bicicletas/5">Electricas</NavDropdown.Item>
                 </NavDropdown>
-            </Nav>
+               
+                </Nav>
+                <Nav>
+                    <Nav.Link href="#cart"><CartWidget /></Nav.Link>
+                </Nav>
+                </Navbar.Collapse>
+                 
             </Container>
-            <Nav>
-                <Nav.Link href="#cart"><CartWidget /></Nav.Link>
-            </Nav>
-        </Navbar>
-         
+            </Navbar>
+    
     )
 }
 
