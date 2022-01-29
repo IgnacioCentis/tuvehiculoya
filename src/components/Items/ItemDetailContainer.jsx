@@ -7,21 +7,15 @@ import ItemDetail from './ItemDetail'
 export default function ItemDetailContainer() {
 
     const[item,setItem] = useState ({})
-    const itemId = '2'
     const {idItem} =useParams();
  
     useEffect(() => {
         getProducts()
         .then((data) =>
-        setItem(
-            idItem ? data.filter((el)=>el.id === idItem):data
-        )
-        )
-       /*  .then((data) => {
-            setItem(data.find((el) => el.id === itemId))
-         })*/
+            setItem(
+                idItem ? data.filter((el)=>el.id === idItem):data))
          .catch((err) => console.log('Error: '+err))
-     }, [])
+     }, [idItem])
 
     return (
         <div>

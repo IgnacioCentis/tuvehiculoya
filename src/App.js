@@ -25,9 +25,11 @@ function App() {
           <NavBar />
           <Routes> 
             {/*incluyo los componentes que van a tener ruteo exact patch busca la ruta exacta */}
-            <Route exact path='/' element= {<ItemListContainer/>} />
-            <Route exact path='/categoria/:idCategoria' element= {<ItemListContainer/>} />
-            <Route exact path='/detalle/:idItem' element= { <ItemDetailContainer  /> } />
+            <Route  path='/' element= {<ItemListContainer/>} />
+            <Route  path='/bicicletas/:idCategoria' element= {<ItemListContainer/>} />
+            <Route  path='/monopatines/:idCategoria' element= {<ItemListContainer/>} />
+            <Route  path='/triciclos/:idCategoria' element= {<ItemListContainer/>} />
+            <Route  path='/detalle/:idItem' element= { <ItemDetailContainer  /> } />
           
           </Routes>
         </Container>

@@ -35,6 +35,16 @@ const products = [
         price:77000 , 
         photo:'assets/image/biciMountain.png'
     }
+    ,
+    {
+        id:'5',
+        stock: '2', 
+        categoria:'triciclo',
+        name:'Venzo  3 ruedas', 
+        description:'Triciclo infantil ', 
+        price:37000 , 
+        photo:'assets/image/triciclo.png'
+    }
 ];
 
 

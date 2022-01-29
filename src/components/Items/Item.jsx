@@ -8,7 +8,7 @@ const Item = ({id, categoria,name,description,price,photo,stock}) =>{
         <Container fluid>
             <Row>
                 <Col></Col>
-                <Col> <h3>Listado de Productos</h3></Col>
+                <Col>  </Col>
                 <Col></Col>
             </Row>
            
