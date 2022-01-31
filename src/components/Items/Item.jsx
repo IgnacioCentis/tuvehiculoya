@@ -1,22 +1,13 @@
 import React from "react"
-import {Col, Row, Card, Container, ListGroup, ListGroupItem, InputGroup, Button } from "react-bootstrap"
+import {Nav,Col, Row, Card, Container, ListGroup, ListGroupItem, InputGroup, Button } from "react-bootstrap"
+import { LinkContainer } from "react-router-bootstrap"
+import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount"
  
 const Item = ({id, categoria,name,description,price,photo,stock}) =>{
     return (
         <>
-        <Container fluid>
-            <Row>
-                <Col></Col>
-                <Col>  </Col>
-                <Col></Col>
-            </Row>
-           
-           </Container>
-        <Container fluid>
-            <Row> 
-                <Col></Col>
-                <Col>
+        
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={photo} />
                         <Card.Body>
@@ -35,14 +26,15 @@ const Item = ({id, categoria,name,description,price,photo,stock}) =>{
                         </Card.Body>
                         <Card.Body>
                         <div className="d-grid gap-2">                                   
-                            <Button     variant="primary">Ver el Detalle</Button> 
+                            <Button variant="primary">                               
+                                <LinkContainer to={`/detalle/${id}`}>
+                                    <Nav.Link>VER MAS</Nav.Link>
+                                </LinkContainer>                                
+                                </Button> 
                         </div>
                         </Card.Body>
                     </Card>
-                </Col>
-                <Col></Col>
-            </Row> 
-        </Container>
+                
         </>
     )
 }

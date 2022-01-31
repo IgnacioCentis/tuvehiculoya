@@ -21,7 +21,7 @@ export default function ItemListContainer() {
         .catch((err) => console.log('Error: '+err))
     }, [idCategoria])
   
- 
+     
     return(
         <>   
             <Row>
