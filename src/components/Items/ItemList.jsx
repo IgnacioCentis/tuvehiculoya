@@ -5,12 +5,9 @@ import Item from "./Item";
 const ItemList =({listProducts}) => {
     return(
         <>
-
- 
             <Container fluid>
                 <Row> 
-                    <Col></Col>
-                    
+                    <Col></Col> 
                         {listProducts.map((list) =>(<Col>
                             <Item 
                                 id= {list.id}
@@ -21,14 +18,11 @@ const ItemList =({listProducts}) => {
                                 price = {list.price}
                                 photo = {list.photo}
                             /></Col>
-                        ))}
-            
+                        ))}   
                 <Col></Col>
             </Row> 
         </Container>
-        </>
-    )
-}
-
+    </>
+)}
 
 export default ItemList;

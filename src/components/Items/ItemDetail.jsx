@@ -3,8 +3,7 @@ import { Card } from 'react-bootstrap'
 
 const ItemDetail = ({idI}) =>{
 
-    //const {name,description,price} = idI
-    console.log('este es el id '+idI.id)
+ 
     return (
         <>
            <Card>

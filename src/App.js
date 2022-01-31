@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+ 
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import React from 'react'
@@ -13,8 +13,6 @@ import ItemDetailContainer from './components/Items/ItemDetailContainer';
 
 
 function App() {
-
-  const miEstilo = {backgroundColor: 'blue'}
 
   //console.log(cartContext)
   return (
