@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, FormControl, InputGroup } from 'react-bootstrap'
 
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock, onAdd}) => {
 
     const [count,setCount] = useState(0)
     const handlerCountAdd = () => {
@@ -10,9 +10,12 @@ const ItemCount = ({stock}) => {
             setCount(count +1)
         } 
     }
-
     const handlerCountLess = () => {
         if (count >0){setCount(count -1)}  
+    }
+
+    const agregar =()=>{
+        onAdd(count)
     }
 
     return (
@@ -25,7 +28,7 @@ const ItemCount = ({stock}) => {
                 aria-describedby="basic-addon1"
                 />
                 <Button onClick={handlerCountAdd} variant="outline-secondary" id="button-add">+</Button>
-                <Button variant="outline-primary">Agregar al Carrito</Button> 
+                <Button onClick={agregar} variant="outline-primary" >Agregar al Carrito</Button> 
             </InputGroup>
             
         </div>
