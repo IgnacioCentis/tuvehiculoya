@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
 import getProducts from '../../utilities/getProducts'
 import ItemList from './ItemList'
-
+//import {doc,getDocs,getDoc, getFirestore, collection} from 'firebase/firestore'
 
 export default function ItemListContainer() {
 
@@ -11,7 +12,25 @@ export default function ItemListContainer() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const {idCategoria} =useParams();
-     
+
+    /*
+    //Utilizando Firebase
+    useEffect(()=>{
+
+        const db = getFirestore()
+        const queryCollection = collection(db,'items')
+        
+        getDocs(queryCollection)
+        .then(resp => setItems( resp.docs.map(product => ( { id: product.id, ...product.data() } )  ) ))
+        .catch((err) =>console.log(err))
+        .finally(()=>setLoading(false))
+
+        //Con un solo producto id
+        //const itemRef = doc(db,'items','5Ik35Eambq9KHYxZ3Fgb')//traigo un item
+        //getDoc(itemRef)
+    }, [idCategoria])
+    console.log(items)*/
+   
     useEffect(() => {
        getProducts()
         //.then((data) => setItems(data))
@@ -21,7 +40,7 @@ export default function ItemListContainer() {
         .catch((err) => console.log('Error: '+err))
         .finally(()=>setLoading(false))
     }, [idCategoria])
-  
+    
      
     return(
         <>   
@@ -36,7 +55,7 @@ export default function ItemListContainer() {
                 <Col></Col>
             </Row>
             
-           <ItemList listProducts={items} /> 
+            <ItemList listProducts={items} /> 
         </>
         
     )

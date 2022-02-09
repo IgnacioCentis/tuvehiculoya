@@ -1,17 +1,22 @@
 import React, {useState} from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useCartContext } from '../../context/CartContext'
 import ItemCount from './ItemCount'
 
 const ItemDetail = ({idI}) =>{
 
+    const {cartCant,cartList,agregarAlCarrito} = useCartContext()
     const [contador, setContador] = useState(0)
+    
+    //cartCant : cantidad de items en el carrito
+    //contado: cantidad seleccionado del item actual
 
     function onAdd (cant){
-        //agregarAlCarrito({id, cantidad:cant})
-        //console.log("Se agrego : "+cant)
-        setContador(cant)
+       setContador(cant)// lo utilizo para verificar que tenga item actual cargado para continual la compra o finalizar
+       agregarAlCarrito({item:idI,quantity:cant})
     }
+
     return (
         <>
            <Card>

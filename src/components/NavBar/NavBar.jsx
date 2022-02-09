@@ -17,7 +17,8 @@ const NavBar = () => {
     <>
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home"><Link to ='/'><img     alt=""
+                <Navbar.Brand href="#home"><Link to ='/'><img     
+                    alt=""
                     src="../assets/image/brand.png"
                     width="55"
                     height="45"
@@ -43,7 +44,7 @@ const NavBar = () => {
                </Nav>             
                 </Navbar.Collapse>
                 <Nav>
-                    <LinkContainer to='/'>
+                    <LinkContainer to='/Cart'>
                         <Nav.Link><CartWidget /></Nav.Link>
                     </LinkContainer>       
                 </Nav>

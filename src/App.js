@@ -10,16 +10,17 @@ import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import ItemListContainer from './components/Items/ItemListContainer';
 import ItemDetailContainer from './components/Items/ItemDetailContainer';
 import Cart from './components/CarritoCompra/Cart';
-//import { cartContext } from './context/CartContext';
+import CartContextProvider from './context/CartContext';
 
 
 function App() {
 
-  //console.log(cartContext)
+  console.log(CartContextProvider)
   return (
     
     <BrowserRouter>
-     {/* <cartContext.Provider> */}{/* es el contexto del cart, que va a servir para todos los componentes encerrados en el */}
+      <CartContextProvider>
+        {/* es el contexto del cart, que va a servir para todos los componentes encerrados en el */}
         <Container fluid>
           <NavBar />
           <Routes> 
@@ -34,7 +35,7 @@ function App() {
         </Container>
         {/*  <ItemListContainer />     
         <ItemDetailContainer /> */} 
-      {/*</cartContext.Provider>  */}
+      </CartContextProvider>  
     </BrowserRouter>
    
   );

@@ -6,9 +6,10 @@ const ItemList =({listProducts}) => {
     return(
         <>
             <Container fluid>
-                <Row> 
-                    <Col></Col> 
-                        {listProducts.map((list) =>(<Col>
+                <Row xs={1} md={2} lg={4} className="g-4"> 
+                    
+                    {listProducts.map((list) =>( 
+                        <Col>
                             <Item 
                                 id= {list.id}
                                 name= {list.name}
@@ -17,9 +18,11 @@ const ItemList =({listProducts}) => {
                                 stock = {list.stock}
                                 price = {list.price}
                                 photo = {list.photo}
-                            /></Col>
-                        ))}   
-                <Col></Col>
+                             /> 
+                        </Col> 
+                    ))} 
+                     
+                
             </Row> 
         </Container>
     </>
