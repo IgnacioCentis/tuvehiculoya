@@ -27,20 +27,18 @@ export default function CartContextProvider({children}) {
     function agregarAlCarrito(item){
        
         if (isInCart(item)){
-            console.log('esta en la lista '+isInCart(item))
-            //const myItem = cartList.find((search) => search.item.id === item.item.id)
-            //console.log(myItem)
-            
-           // const newList = cartList
-            cartList.map(function (search,index){
-               if (isInCart(search)){
-                  //TENGO QUE ACTUALIZAR LA CANTIDAD DE LOS ITEM DUPLICADOS, NO ENCOTRE LA MANERA CON EL useState
-                  // console.log('encontrado en la cart '+search.item.name)
-                  // console.log('encontrado en la cart '+search.quantity)
-                  // console.log(newList)
-                  // newList[index].item = search
-                  // newList[index].quantity = search.quantity + item.quantity   
+           // console.log('esta en la lista '+isInCart(item))           
+            const newList = [...cartList]
+            newList.map(function (search,index){
+               // console.log({search})
+               if (search.item.id === item.item.id){
+                   search.quantity += item.quantity
+                 
                }    
+               setCartList(newList)
+              // console.log("cartCant"+cartCant)
+              // console.log("item.quantity"+item.quantity)
+               setCartCant(cartCant+item.quantity)
            } )
         }else{
             console.log('No se encuentra en la lista'+cartList)
@@ -50,21 +48,6 @@ export default function CartContextProvider({children}) {
         
 
     }
-
-    /*function agregarAlCarrito(item){
-        //seto un nuevo array, con el objeto y el item que va a ser la cantidad                  
-        //UTILIZAR UN FIND, VERIFICO QUE NO EXISTA EL ARTICULO
-        if(cartList.find((search) => search.item.id === item.item.id)  ){
-            console.log('esta en la lista'+cartList)
-            //ACA TENGO QUE ACTUALIZAR EL QUANTITY EL ITEM
-
-        }else{
-            console.log('No se encuentra en la lista'+cartList)
-            setCartList([...cartList,item])
-            setCartCant(cartCant+item.quantity) 
-        }
-    }*/
-
 
     function sumCantidad(cant){
         //Sumo todos los items agregados al carrito
