@@ -21,21 +21,18 @@ export default function ItemDetailContainer() {
 
     return (
 
-        <div>
-             <Container fluid>
-                <Row className='mt-3 mb-3'>
-                    <Col></Col>
-                    <Col>  {loading?<h3>Cargando... </h3>:<h3>Detalle del  {item.name}</h3>} </Col>
-                    <Col></Col>
-                </Row> 
-                <Row>
-                    <Col></Col>
-                    <Col><ItemDetail idI={item} /></Col>
-                    <Col></Col>
-                </Row>             
-            </Container> 
-            
+        <>
+            <Row className='mt-3 mb-3'>
+                <Col></Col>
+                <Col>  {loading?<h3>Cargando... </h3>:<h3>Detalle del  {item.name}</h3>} </Col>
+                <Col></Col>
+            </Row> 
+            <Row>
+                <Col></Col>
+                <Col><ItemDetail idI={item} /></Col>
+                <Col></Col>
+            </Row>                  
            
-        </div>
+        </>
     )
 }

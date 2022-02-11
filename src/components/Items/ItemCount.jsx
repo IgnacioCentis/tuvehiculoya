@@ -19,7 +19,7 @@ const ItemCount = ({stock, onAdd}) => {
 
     const agregar =()=>{
         onAdd(count)
-       // sumCantidad(count)
+       
     }
     
    

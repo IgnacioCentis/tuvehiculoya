@@ -16,6 +16,10 @@ export default function CartContextProvider({children}) {
     const[cartList,setCartList] = useState([])
     const[cartCant, setCartCant] = useState(0)
 
+    function sumCartCant(cart, cant, operador){
+        //Sumo  y resto  los items agregados o quitado del carrito
+        (operador === '+')?setCartCant(cart+cant):setCartCant(cart-cant)
+    }
 
  
     function isInCart (parametro) { 
@@ -25,33 +29,33 @@ export default function CartContextProvider({children}) {
     }
 
     function agregarAlCarrito(item){
-       
+
         if (isInCart(item)){
            // console.log('esta en la lista '+isInCart(item))           
             const newList = [...cartList]
             newList.map(function (search,index){
                // console.log({search})
                if (search.item.id === item.item.id){
-                   search.quantity += item.quantity
-                 
+                   search.quantity += item.quantity            
                }    
                setCartList(newList)
-              // console.log("cartCant"+cartCant)
-              // console.log("item.quantity"+item.quantity)
-               setCartCant(cartCant+item.quantity)
+              sumCartCant(cartCant,item.quantity,'+')
            } )
         }else{
             console.log('No se encuentra en la lista'+cartList)
             setCartList([...cartList,item])
-            setCartCant(cartCant+item.quantity) 
-        }
-        
-
+            sumCartCant(cartCant,item.quantity,'+') 
+        }  
     }
 
-    function sumCantidad(cant){
-        //Sumo todos los items agregados al carrito
-       // setCartCant(cartCant+cant)
+    const eliminarItem = (item) => {
+        //Elimina un item seleccionado del carrito y actualizo el valor total del carrito
+        
+            const newList = [...cartList]
+            const itemEliminado =newList.filter(x=>x.item.id !==item.item.id)
+            console.log('buscando item eliminar')
+            sumCartCant(cartCant,item.quantity,'-')
+            return setCartList(itemEliminado)
     }
 
     function vaciarCarrito(){
@@ -60,7 +64,7 @@ export default function CartContextProvider({children}) {
     }
      
     return (
-        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,sumCantidad,cartCant}}>
+        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem}}>
             {children}
         </cartContext.Provider>
     )

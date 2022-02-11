@@ -10,7 +10,7 @@ const ItemDetail = ({idI}) =>{
     const [contador, setContador] = useState(0)
     
     //cartCant : cantidad de items en el carrito
-    //contado: cantidad seleccionado del item actual
+    //contador: cantidad seleccionado del item actual
 
     function onAdd (cant){
        setContador(cant)// lo utilizo para verificar que tenga item actual cargado para continual la compra o finalizar
