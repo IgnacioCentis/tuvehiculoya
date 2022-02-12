@@ -1,37 +1,47 @@
 import React from 'react'
-import { Badge, Card, ListGroup, PageItem, Button,CloseButton } from 'react-bootstrap'
+import { Badge, Card, ListGroup, PageItem, Button,CloseButton, Row, Col, Container } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { useCartContext } from '../../context/CartContext'
+import CartList from './CartList'
+import CartTotalDetail from './CartTotalDetail'
 
 const Cart = () => {
 
-    const {cartList,vaciarCarrito,eliminarItem} = useCartContext()
+    const {cartList} = useCartContext()
 
     return(
         <>       
-            <div>
-                <h3>Carrito de compra!</h3>   
-                    {cartList.map(p => 
-                        <ListGroup as="ol" numbered>
-                        
-                            <ListGroup.Item
-                                as="li"
-                                className="d-flex justify-content-between align-items-start">
-                                
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">{p.item.name}</div>             
-                            </div>
-                            <Badge variant="primary" pill>
-                            {p.quantity}
-                            </Badge>
-                            <div > <CloseButton onClick={() => eliminarItem(p)} className="mx-2" /></div>
-                            </ListGroup.Item >                
-                        </ListGroup>
-                    )}
-                <div className="mt-2">
-                    <Button onClick={vaciarCarrito} variant="light">Vaciar</Button>
-                </div>
-                
-            </div>
+            
+               <Container className='mt-4' fluid>                   
+                    {   cartList.length  !== 0  
+                            ? 
+                                <Row xs={1} md={2} lg={4} className="g-4"> 
+                                    <Col></Col>
+                                    <Col> <CartList /></Col>
+                                    <Col><CartTotalDetail/></Col>
+                                    <Col></Col>
+                                </Row>
+                            :   
+                                <div>
+                                    <Row>
+                                        <Col></Col>
+                                        <Col>
+                                            <h3> Ops... El carrito esta vacio!</h3> 
+                                            <h5>Seguro no encontraste lo que buscabas?</h5> 
+                                            <div className="mt-2">
+                                                <LinkContainer to='/'>
+                                                    <Button className='btn-secondary'>Continuar comprando</Button>
+                                                </LinkContainer>
+                                            </div>
+                                        </Col>
+                                        <Col></Col>
+                                    </Row>
+                                </div>
+                        }  
+                    
+                   
+                </Container>
+            
         </>
     )
 }

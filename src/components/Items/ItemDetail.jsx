@@ -6,7 +6,7 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({idI}) =>{
 
-    const {cartCant,cartList,agregarAlCarrito} = useCartContext()
+    const {agregarAlCarrito} = useCartContext()
     const [contador, setContador] = useState(0)
     
     //cartCant : cantidad de items en el carrito

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { Button, FormControl, InputGroup } from 'react-bootstrap'
-import { useCartContext } from '../../context/CartContext'
-
+ 
 
 const ItemCount = ({stock, onAdd}) => {
 
-    const {sumCantidad} = useCartContext()
+     
 
-    const [count,setCount] = useState(0)
+    const [count,setCount] = useState(1)
     const handlerCountAdd = () => {
         if(count < stock){
             setCount(count +1)

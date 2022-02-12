@@ -1,8 +1,5 @@
 import {createContext,useContext, useState} from "react"
 import React from 'react'
-import { isElementOfType } from "react-dom/cjs/react-dom-test-utils.production.min"
-import { computeStyles } from "@popperjs/core"
-
 
 const cartContext = createContext([]) //creo el contexto
 
@@ -15,12 +12,13 @@ export default function CartContextProvider({children}) {
     //creo el estado cartList donde guardar los items seleccionados de manera global
     const[cartList,setCartList] = useState([])
     const[cartCant, setCartCant] = useState(0)
+    const[sumPrice,setSumPrice] = useState(0)
 
-    function sumCartCant(cart, cant, operador){
+
+    function sumCartCant(cart, cant, operator){
         //Sumo  y resto  los items agregados o quitado del carrito
-        (operador === '+')?setCartCant(cart+cant):setCartCant(cart-cant)
+        (operator === '+')?setCartCant(cart+cant):setCartCant(cart-cant)
     }
-
  
     function isInCart (parametro) { 
         const status = cartList.some( i => i.item.id === parametro.item.id)
@@ -28,43 +26,55 @@ export default function CartContextProvider({children}) {
         return status
     }
 
-    function agregarAlCarrito(item){
+    function totalPrice (item, operator){
+        //Sumo o resto el valor del item al total del carrito
+        (operator === '+')
+            ?
+                setSumPrice(sumPrice + item.item.price*item.quantity)
+            :
+                setSumPrice(sumPrice - item.item.price*item.quantity)
+         
+    }
 
-        if (isInCart(item)){
-           // console.log('esta en la lista '+isInCart(item))           
+    function agregarAlCarrito(item){
+        totalPrice(item, '+')
+
+        if (isInCart(item)){      
             const newList = [...cartList]
-            newList.map(function (search,index){
-               // console.log({search})
+            newList.map(function (search,index){      
                if (search.item.id === item.item.id){
                    search.quantity += item.quantity            
                }    
                setCartList(newList)
-              sumCartCant(cartCant,item.quantity,'+')
+               sumCartCant(cartCant,item.quantity,'+')                  
            } )
         }else{
-            console.log('No se encuentra en la lista'+cartList)
+          
             setCartList([...cartList,item])
             sumCartCant(cartCant,item.quantity,'+') 
         }  
     }
 
     const eliminarItem = (item) => {
-        //Elimina un item seleccionado del carrito y actualizo el valor total del carrito
-        
+        //Elimina un item seleccionado del carrito y actualizo el valor total del carrito 
+        if (window.confirm("Seguro desea quitar este producto de su carrito?")){
             const newList = [...cartList]
             const itemEliminado =newList.filter(x=>x.item.id !==item.item.id)
-            console.log('buscando item eliminar')
             sumCartCant(cartCant,item.quantity,'-')
             return setCartList(itemEliminado)
+        }
+           
     }
 
     function vaciarCarrito(){
-        setCartList([])
-        setCartCant()
+        if (window.confirm("Seguro desea vaciar su carrito?")){
+            setCartList([])
+            setCartCant()
+        } 
     }
      
     return (
-        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem}}>
+        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem,sumPrice}}>
             {children}
         </cartContext.Provider>
     )

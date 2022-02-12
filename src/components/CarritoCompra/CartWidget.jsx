@@ -10,7 +10,7 @@ const CartWidget = () => {
     return (
         <div >
             <Badge variant="primary" pill>
-               {cartCant }
+               {cartCant >0 ? cartCant : '' }
             </Badge>
             <BsCart2 size={42} title='Ver tu carrito'/>
         </div>
