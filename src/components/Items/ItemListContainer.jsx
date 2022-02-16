@@ -13,15 +13,14 @@ export default function ItemListContainer() {
     const [loading, setLoading] = useState(true)
     const {idCategoria} =useParams();
 
-    /*
-    //Utilizando Firebase
+    
+    //Utilizando Firestore
     useEffect(()=>{
-
-        const db = getFirestore()
-        const queryCollection = collection(db,'items')
         
-        getDocs(queryCollection)
+       const type = (idCategoria? 'category': '')
+        getProducts(type,idCategoria)
         .then(resp => setItems( resp.docs.map(product => ( { id: product.id, ...product.data() } )  ) ))
+ 
         .catch((err) =>console.log(err))
         .finally(()=>setLoading(false))
 
@@ -29,9 +28,12 @@ export default function ItemListContainer() {
         //const itemRef = doc(db,'items','5Ik35Eambq9KHYxZ3Fgb')//traigo un item
         //getDoc(itemRef)
     }, [idCategoria])
-    console.log(items)*/
+    console.log('categoria id');
+    console.log(idCategoria)
    
-    useEffect(() => {
+
+    //Sin fireStore
+  /*  useEffect(() => {
        getProducts()
         //.then((data) => setItems(data))
         .then((data) =>
@@ -41,7 +43,7 @@ export default function ItemListContainer() {
         .finally(()=>setLoading(false))
     }, [idCategoria])
     
-     
+     */
     return(
         <>   
             <Row className='mt-3 mb-3'>

@@ -12,9 +12,8 @@ export default function ItemDetailContainer() {
     const {idItem} =useParams();
   
     useEffect(() => {
-        getProducts()
-        .then((data) =>
-            setItem(data.find((el)=>el.id === idItem)))
+        getProducts('idItem',idItem)
+         .then(resp => setItem({id:resp.id,...resp.data()} ))
          .catch((err) => console.log('Error: '+err))
          .finally(()=>setloading(false));
      }, [idItem])
