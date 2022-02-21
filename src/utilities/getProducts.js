@@ -28,7 +28,14 @@ const getProducts = async (filterType,filterData) =>{
 
 
 
+       // const queryFilter = filterCategory ? query(queryCollection,where('categoria','==',filterCategory)) : queryCollection
 
+        //const queryFilter = filterCategory ? query(queryCollection,where('categoria','==',filterCategory)) : queryCollection
+        //const queryFilter = doc(db,'items',filterCategory)//traigo un item por id
+     /*   const response = await getDocs(queryFilter)
+        console.log('queryFilter')
+        console.log(queryFilter)
+        return response*/
     }
     catch{
         return console.log('error de conexion')

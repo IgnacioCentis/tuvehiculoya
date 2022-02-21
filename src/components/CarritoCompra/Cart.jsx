@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useCartContext } from '../../context/CartContext'
 import CartList from './CartList'
 import CartTotalDetail from './CartTotalDetail'
+import FormBuyer from './FormBuyer'
 
 const Cart = () => {
 
@@ -11,13 +12,13 @@ const Cart = () => {
 
     return(
         <>       
-            
                <Container className='mt-4' fluid>                   
                     {   cartList.length  !== 0  
                             ? 
                                 <Row xs={1} md={2} lg={4} className="g-4"> 
-                                    <Col></Col>
+                                   
                                     <Col> <CartList /></Col>
+                                    <Col><FormBuyer /></Col>
                                     <Col><CartTotalDetail/></Col>
                                     <Col></Col>
                                 </Row>
@@ -37,9 +38,7 @@ const Cart = () => {
                                         <Col></Col>
                                     </Row>
                                 </div>
-                        }  
-                    
-                   
+                        }                     
                 </Container>
             
         </>

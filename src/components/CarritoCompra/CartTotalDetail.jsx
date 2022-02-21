@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import { useCartContext } from '../../context/CartContext';
+ 
 
 export default function CartTotalDetail() {
     const{sumPrice,vaciarCarrito,cartCant} = useCartContext()
@@ -17,6 +18,9 @@ export default function CartTotalDetail() {
 
             <div  className="d-grid gap-2 mt-2">
                 <Button onClick={vaciarCarrito} variant="secondary" size="md">Vaciar</Button>
+            </div>
+            <div  className="d-grid gap-2 mt-2">
+             
             </div>
         </>;
 }

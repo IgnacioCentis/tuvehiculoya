@@ -5,7 +5,6 @@ import { useCartContext } from '../../context/CartContext';
 export default function CartList() {
     
     const {cartList,vaciarCarrito,eliminarItem} = useCartContext()
-
   return <div>
              {cartList.map(p => 
                 <div>
@@ -21,9 +20,7 @@ export default function CartList() {
                         </Badge>
                         <div > <CloseButton onClick={() => eliminarItem(p)} className="mx-2" /></div>
                         </ListGroup.Item >                
-                    </ListGroup>
-                    
+                    </ListGroup>         
                 </div>)}
-                 
         </div>;
 }
