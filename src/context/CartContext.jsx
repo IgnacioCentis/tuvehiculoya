@@ -13,7 +13,7 @@ export default function CartContextProvider({children}) {
     const[cartList,setCartList] = useState([])
     const[cartCant, setCartCant] = useState(0)
     const[sumPrice,setSumPrice] = useState(0)
-
+    const[idOrder,setIdOrder] = useState('')
 
     function sumCartCant(cart, cant, operator){
         //Sumo  y resto  los items agregados o quitado del carrito
@@ -75,7 +75,7 @@ export default function CartContextProvider({children}) {
     
      
     return (
-        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem,sumPrice}}>
+        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem,sumPrice,idOrder,setIdOrder}}>
             {children}
         </cartContext.Provider>
     )

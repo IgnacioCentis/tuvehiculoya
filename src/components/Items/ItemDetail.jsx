@@ -26,7 +26,7 @@ const ItemDetail = ({idI}) =>{
                     {idI.features}
                 </Card.Text>
                 </Card.Body>
-                <Card.Img className="width:25%" variant="bottom" src={idI.photo} fluid />
+                <Card.Img className="width:25%" variant="bottom" src={idI.photo}  />
                 <Card.Body>
                     {
                         contador === 0 ? 

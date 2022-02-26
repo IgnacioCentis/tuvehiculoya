@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
 import getProducts from '../../utilities/getProducts'
 import ItemList from './ItemList'
-//import {doc,getDocs,getDoc, getFirestore, collection} from 'firebase/firestore'
 
 export default function ItemListContainer() {
 
@@ -14,7 +12,6 @@ export default function ItemListContainer() {
     const {idCategoria} =useParams();
 
     
-    //Utilizando Firestore
     useEffect(()=>{
         
        const type = (idCategoria? 'category': '')
@@ -24,12 +21,7 @@ export default function ItemListContainer() {
         .catch((err) =>console.log(err))
         .finally(()=>setLoading(false))
 
-        //Con un solo producto id
-        //const itemRef = doc(db,'items','5Ik35Eambq9KHYxZ3Fgb')//traigo un item
-        //getDoc(itemRef)
-    }, [idCategoria])
-    console.log('categoria id');
-    console.log(idCategoria)
+    }, [idCategoria])   
    
 
     //Sin fireStore
