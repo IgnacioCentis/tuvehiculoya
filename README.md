@@ -19,11 +19,12 @@ Proyecto basado en un eCommerce SPA de bicicletas, monopatines y triciclos desar
 
 ## Tech
 
-Se utilizaron diferentes librerias y frameworks:
 
 - react-router-bootstrap
 - react-router-dom
 - React Bootstrap
 - Firebase
+- Netlify
+- Dillinger
 
 MVP: https://tuvehiculoya.netlify.app/
