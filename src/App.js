@@ -33,7 +33,8 @@ function App() {
  
       </CartContextProvider>  
     </BrowserRouter>
-   
+ 
+    
   );
 }
 

@@ -4,8 +4,17 @@ import { useCartContext } from '../../context/CartContext';
  
 
 export default function CartTotalDetail() {
-    const{sumPrice,vaciarCarrito,cartCant} = useCartContext()
+    
+    const{sumPrice,emptyCart,cartCant} = useCartContext()
   
+    const preguntaVaciar =()=>{
+    
+        if (window.confirm("Seguro desea vaciar su carrito?")){
+            emptyCart()
+          
+        }
+    }
+
   return <>   
             <Card style={{ width: '18rem' }}>
                 <Card.Header>Tu Compra:</Card.Header>
@@ -17,7 +26,8 @@ export default function CartTotalDetail() {
             </Card>
 
             <div  className="d-grid gap-2 mt-2">
-                <Button onClick={vaciarCarrito} variant="secondary" size="md">Vaciar</Button>
+                
+                <Button onClick={preguntaVaciar} variant="secondary" size="md">Vaciar</Button>
             </div>
             <div  className="d-grid gap-2 mt-2">
              

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import getProducts from '../../utilities/getProducts'
 import ItemDetail from './ItemDetail'
@@ -19,7 +19,6 @@ export default function ItemDetailContainer() {
      }, [idItem])
 
     return (
-
         <>
             <Row className='mt-3 mb-3'>
                 <Col></Col>

@@ -7,9 +7,8 @@ const ItemList =({listProducts}) => {
         <>
             <Container fluid>
                 <Row xs={1} md={2} lg={4} className="g-4"> 
-                    
                     {listProducts.map((list) =>( 
-                        <Col>
+                        <Col key={list.id}>
                             <Item 
                                 id= {list.id}
                                 name= {list.name}
@@ -21,8 +20,6 @@ const ItemList =({listProducts}) => {
                              /> 
                         </Col> 
                     ))} 
-                     
-                
             </Row> 
         </Container>
     </>

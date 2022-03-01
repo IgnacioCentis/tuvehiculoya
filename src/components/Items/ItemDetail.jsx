@@ -6,15 +6,15 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({idI}) =>{
 
-    const {agregarAlCarrito} = useCartContext()
+    const {addToCart} = useCartContext()
     const [contador, setContador] = useState(0)
     
     //cartCant : cantidad de items en el carrito
     //contador: cantidad seleccionado del item actual
 
     function onAdd (cant){
-       setContador(cant)// lo utilizo para verificar que tenga item actual cargado para continual la compra o finalizar
-       agregarAlCarrito({item:idI,quantity:cant})
+       setContador(cant)// lo utilizo para verificar que tenga item actual cargado para continuar la compra o finalizar
+       addToCart({item:idI,quantity:cant})
     }
 
     return (
@@ -33,10 +33,10 @@ const ItemDetail = ({idI}) =>{
                         <ItemCount stock={idI.stock} onAdd={onAdd}/> : 
                         <>
                             <LinkContainer to='/Cart'>
-                                <Button className='mx-4'>Finalizar</Button>
+                                <Button title="Ir al carrito" className='mx-4'>Finalizar</Button>
                             </LinkContainer>
                             <LinkContainer to='/'>
-                                <Button className='btn-secondary'>Continuar comprando</Button>
+                                <Button title="Volver al catalogo" className='btn-secondary'>Continuar comprando</Button>
                             </LinkContainer>
                         </>
                     }

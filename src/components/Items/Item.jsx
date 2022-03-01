@@ -1,12 +1,8 @@
 import React from "react"
-import {Nav,  Card,   ListGroup, ListGroupItem,   Button } from "react-bootstrap"
+import {  Card,   ListGroup, ListGroupItem,   Button } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
  
-
- 
 const Item = ({id, categoria,name,description,price,photo,stock}) =>{
-
-    
 
     return (
         <>      
@@ -27,7 +23,7 @@ const Item = ({id, categoria,name,description,price,photo,stock}) =>{
                 <Card.Body>
                 <div className="d-grid gap-2">                                   
                 <LinkContainer to={`/detalle/${id}`}>
-                    <Button variant="primary">  VER MAS  </Button>    
+                    <Button title="Conocer más sobre el producto" variant="primary">  VER MAS  </Button>    
                 </LinkContainer>                                
                          
                 </div>

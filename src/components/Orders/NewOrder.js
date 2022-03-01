@@ -1,17 +1,16 @@
 import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
 
-export async function NewOrder (buyer,cartList,vaciarCarrito,setId){
+export async function NewOrder (buyer,cartList,sumPrice,emptyCart,addOrder){
     try{
 
         let order = {}
         order.buyer = buyer
-        order.total = '1000'// utilizar funcion q calcule el total
+        order.total = sumPrice
 
         order.items = cartList.map(cartItem =>{
             const id = cartItem.item.id
             const name = cartItem.item.name
             const price = cartItem.item.price
-            const cant = cartItem.item.cant
             return{
                 id,name,price
             }
@@ -21,7 +20,7 @@ export async function NewOrder (buyer,cartList,vaciarCarrito,setId){
         const db = getFirestore()
         const orderCollection = collection(db, 'orders')
         await addDoc(orderCollection,order)
-            .then(resp =>setId(resp.id))
+            .then(resp =>addOrder(resp.id))
 
         //Actualizo los Stock de los productos
 
@@ -33,9 +32,10 @@ export async function NewOrder (buyer,cartList,vaciarCarrito,setId){
                 stock:res.data().stock - cartList.find(item =>item.item.id === res.id).quantity
             })))
             .catch(err=>console.log('Error conexion Update Stock: '+err))
-            .finally(()=>console.log('Stock actualizado'))
+            .finally(()=>console.log('Orden Procesada - Stock actualizado'))
         batch.commit()
-        vaciarCarrito()
+        emptyCart()
+         
     }
     catch{
         console.log('Error: No se pudo procesar la orden')

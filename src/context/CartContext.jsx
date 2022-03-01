@@ -10,11 +10,18 @@ export function useCartContext(){ //retorno el useContext creado
 export default function CartContextProvider({children}) {
 
     //creo el estado cartList donde guardar los items seleccionados de manera global
-    const[cartList,setCartList] = useState([])
-    const[cartCant, setCartCant] = useState(0)
-    const[sumPrice,setSumPrice] = useState(0)
-    const[idOrder,setIdOrder] = useState('')
+    const[cartList,setCartList] = useState([]) //lista de productos en el carrito
+    const[cartCant, setCartCant] = useState(0) //cantidad total de productos
+    const[sumPrice,setSumPrice] = useState(0) //precio total orden
+    const[idOrder,setIdOrder] = useState('') //numero de orden
 
+
+    function addOrder(order){
+        setIdOrder(order)
+        console.log('num orden: '+order)
+    }
+
+    
     function sumCartCant(cart, cant, operator){
         //Sumo  y resto  los items agregados o quitado del carrito
         (operator === '+')?setCartCant(cart+cant):setCartCant(cart-cant)
@@ -36,12 +43,12 @@ export default function CartContextProvider({children}) {
          
     }
 
-    function agregarAlCarrito(item){
+    function addToCart(item){
         totalPrice(item, '+')
 
         if (isInCart(item)){      
             const newList = [...cartList]
-            newList.map(function (search,index){      
+            newList.map(function (search){      
                if (search.item.id === item.item.id){
                    search.quantity += item.quantity            
                }    
@@ -62,20 +69,18 @@ export default function CartContextProvider({children}) {
             const itemEliminado =newList.filter(x=>x.item.id !==item.item.id)
             sumCartCant(cartCant,item.quantity,'-')
             return setCartList(itemEliminado)
-        }
-           
+        }       
     }
 
-    function vaciarCarrito(){
-        if (window.confirm("Seguro desea vaciar su carrito?")){
-            setCartList([])
-            setCartCant()
-        } 
+    function emptyCart(){
+        setCartList([])
+        setCartCant()
     }
     
+   
      
     return (
-        <cartContext.Provider value={{cartList,agregarAlCarrito, vaciarCarrito,cartCant,eliminarItem,sumPrice,idOrder,setIdOrder}}>
+        <cartContext.Provider value={{cartList,addToCart, emptyCart,cartCant,eliminarItem,sumPrice,idOrder,setIdOrder,addOrder}}>
             {children}
         </cartContext.Provider>
     )

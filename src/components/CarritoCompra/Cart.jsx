@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge, Card, ListGroup, PageItem, Button,CloseButton, Row, Col, Container } from 'react-bootstrap'
+import {  Button, Row, Col, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useCartContext } from '../../context/CartContext'
 import CartList from './CartList'
@@ -8,7 +8,7 @@ import FormBuyer from './FormBuyer'
 
 const Cart = () => {
 
-    const {cartList} = useCartContext()
+    const {cartList,idOrder} = useCartContext()
 
     return(
         <>       
@@ -18,8 +18,9 @@ const Cart = () => {
                                 <Row xs={1} md={2} lg={4} className="g-4"> 
                                    
                                     <Col> <CartList /></Col>
-                                    <Col><FormBuyer /></Col>
                                     <Col><CartTotalDetail/></Col>
+                                    <Col><FormBuyer /></Col>
+                                   
                                     <Col></Col>
                                 </Row>
                             :   
@@ -27,6 +28,7 @@ const Cart = () => {
                                     <Row>
                                         <Col></Col>
                                         <Col>
+                                            {idOrder?<h4>Tu Orden: {idOrder}</h4>:''}
                                             <h3> Ops... El carrito esta vacio!</h3> 
                                             <h5>Seguro no encontraste lo que buscabas?</h5> 
                                             <div className="mt-2">
@@ -39,8 +41,7 @@ const Cart = () => {
                                     </Row>
                                 </div>
                         }                     
-                </Container>
-            
+                </Container>           
         </>
     )
 }

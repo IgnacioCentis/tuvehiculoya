@@ -1,13 +1,13 @@
 import React from 'react';
-import { Badge, Button, CloseButton, ListGroup } from 'react-bootstrap';
+import { Badge, CloseButton, ListGroup } from 'react-bootstrap';
 import { useCartContext } from '../../context/CartContext';
 
 export default function CartList() {
     
-    const {cartList,vaciarCarrito,eliminarItem} = useCartContext()
+    const {cartList,eliminarItem} = useCartContext()
   return <div>
              {cartList.map(p => 
-                <div>
+                <div key={p.item.name}>
                     <ListGroup as="ol" numbered>          
                         <ListGroup.Item
                             as="li"

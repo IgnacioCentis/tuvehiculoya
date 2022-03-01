@@ -14,7 +14,7 @@ export default function ItemListContainer() {
     
     useEffect(()=>{
         
-       const type = (idCategoria? 'category': '')
+       const type = (idCategoria? 'category': '')//filtro por categoria
         getProducts(type,idCategoria)
         .then(resp => setItems( resp.docs.map(product => ( { id: product.id, ...product.data() } )  ) ))
  
@@ -24,18 +24,6 @@ export default function ItemListContainer() {
     }, [idCategoria])   
    
 
-    //Sin fireStore
-  /*  useEffect(() => {
-       getProducts()
-        //.then((data) => setItems(data))
-        .then((data) =>
-            setItems(
-                idCategoria ? data.filter((el)=>el.categoria === idCategoria):data ))
-        .catch((err) => console.log('Error: '+err))
-        .finally(()=>setLoading(false))
-    }, [idCategoria])
-    
-     */
     return(
         <>   
             <Row className='mt-3 mb-3'>
