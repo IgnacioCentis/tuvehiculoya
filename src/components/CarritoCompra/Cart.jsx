@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Button, Row, Col, Container } from 'react-bootstrap'
+import { Card, Button, Row, Col, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useCartContext } from '../../context/CartContext'
 import CartList from './CartList'
@@ -9,7 +9,7 @@ import FormBuyer from './FormBuyer'
 const Cart = () => {
 
     const {cartList,idOrder} = useCartContext()
-
+   
     return(
         <>       
                <Container className='mt-4' fluid>                   
@@ -23,22 +23,23 @@ const Cart = () => {
                                    
                                     <Col></Col>
                                 </Row>
-                            :   
-                                <div>
-                                    <Row>
-                                        <Col></Col>
-                                        <Col>
-                                            {idOrder?<h4>Tu Orden: {idOrder}</h4>:''}
-                                            <h3> Ops... El carrito esta vacio!</h3> 
-                                            <h5>Seguro no encontraste lo que buscabas?</h5> 
-                                            <div className="mt-2">
-                                                <LinkContainer to='/'>
-                                                    <Button className='btn-secondary'>Continuar comprando</Button>
-                                                </LinkContainer>
-                                            </div>
-                                        </Col>
-                                        <Col></Col>
-                                    </Row>
+                            :  
+                            <div> 
+                                <Card className="text-center">
+                                    <Card.Header> Carrito de compras</Card.Header>
+                                    <Card.Body>
+                                        <Card.Title>Ops... El carrito esta vacio!</Card.Title>
+                                        
+                                        {idOrder?<Card.Text>Tu compra fue procesada exitosamente, Guia : {idOrder}</Card.Text>:<Card.Text>Seguro no encontraste lo que buscas?</Card.Text>}
+                                        
+                                        <LinkContainer to='/'>
+                                            <Button className='btn-secondary'>Continuar comprando</Button>
+                                        </LinkContainer>
+                                    </Card.Body>
+                                    <Card.Footer className="text-muted">TuVehiculoYa!</Card.Footer>
+                                </Card>
+                               
+                                     
                                 </div>
                         }                     
                 </Container>           
