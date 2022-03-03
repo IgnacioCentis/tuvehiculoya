@@ -1,7 +1,6 @@
 # TuVehiculoYa
 ## _Proyecto Final curso ReactJs Coderhouse_
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
 [public repository [GitHub]](https://github.com/IgnacioCentis/tuvehiculoya)
 
