@@ -27,4 +27,7 @@ Proyecto basado en un eCommerce SPA de bicicletas, monopatines y triciclos desar
 - Netlify
 - Dillinger
 
-MVP: https://tuvehiculoya.netlify.app/
+MVP using Netlify
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d40302f9-16ed-435e-8022-a3958e1c0050/deploy-status)](https://app.netlify.com/sites/tuvehiculoya/deploys)
+
+: https://tuvehiculoya.netlify.app/
