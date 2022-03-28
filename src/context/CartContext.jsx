@@ -9,6 +9,7 @@ export function useCartContext(){ //retorno el useContext creado
 
 export default function CartContextProvider({children}) {
 
+    
     //creo el estado cartList donde guardar los items seleccionados de manera global
     const[cartList,setCartList] = useState([]) //lista de productos en el carrito
     const[cartCant, setCartCant] = useState(0) //cantidad total de productos
